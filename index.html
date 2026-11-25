@@ -3,20 +3,308 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>donaldbthomas</title>
+  <title>Donald Thomas · Technical Accounting Leader</title>
+  <meta name="description" content="Donald Thomas — Controller and revenue recognition expert with experience at the FASB, KPMG and multinational corporations.">
   <style>
-    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-           background: #f6f7f9; color: #1f2328; }
-    main { max-width: 36rem; padding: 2rem; text-align: center; }
-    h1 { font-size: 2.5rem; margin: 0 0 0.5rem; }
-    p { font-size: 1.15rem; line-height: 1.6; color: #57606a; }
+    :root {
+      --bg: #0c1424;
+      --bg-elev: rgba(12, 20, 36, 0.72);
+      --text: #e6ebf2;
+      --text-2: #a3afc2;
+      --text-3: #8b97ab;
+      --accent: #7cc4ff;
+      --accent-bg: rgba(124, 196, 255, 0.12);
+      --line: rgba(230, 235, 242, 0.12);
+      --card-hover: rgba(230, 235, 242, 0.045);
+      --radius: 0.5rem;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font: 100%/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-2);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    .skip {
+      position: absolute; left: -999px; top: 1rem;
+      padding: 0.75rem 1rem; border-radius: var(--radius);
+      background: var(--text); color: var(--bg); font-weight: 600; z-index: 50;
+    }
+    .skip:focus { left: 1rem; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 64rem) {
+      .wrap { display: flex; gap: 4rem; padding: 0 3rem; }
+      header.intro {
+        position: sticky; top: 0; height: 100vh; width: 48%;
+        display: flex; flex-direction: column; justify-content: space-between;
+        padding: 6rem 0;
+      }
+      main { width: 52%; padding: 6rem 0; }
+    }
+    header.intro { padding-top: 4rem; }
+
+    h1 {
+      margin: 0; color: var(--text);
+      font-size: clamp(2.5rem, 5vw, 3.25rem);
+      line-height: 1.05; letter-spacing: -0.025em; font-weight: 700;
+    }
+    .role {
+      margin: 0.75rem 0 0; color: var(--text);
+      font-size: 1.25rem; line-height: 1.3; letter-spacing: -0.01em; font-weight: 500;
+    }
+    .pitch { margin: 1rem 0 0; max-width: 22rem; line-height: 1.55; }
+
+    nav.toc { display: none; margin-top: 4rem; }
+    @media (min-width: 64rem) { nav.toc { display: block; } }
+    nav.toc ul { list-style: none; margin: 0; padding: 0; }
+    nav.toc a {
+      display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0;
+      text-decoration: none; color: var(--text-3);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    nav.toc a .bar { display: block; height: 1px; width: 2rem; background: currentColor; transition: width 150ms ease-out; }
+    nav.toc a:hover, nav.toc a.current { color: var(--text); }
+    nav.toc a:hover .bar, nav.toc a.current .bar { width: 4rem; }
+    nav.toc a:active { opacity: 0.6; transition: none; }
+
+    .links { display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1rem; border-radius: 999px;
+      border: 1px solid var(--line); text-decoration: none;
+      color: var(--text); font-size: 0.9rem; font-weight: 600;
+      transition: background-color 120ms ease-out, border-color 120ms ease-out, transform 100ms ease-out;
+    }
+    .btn:hover { background: var(--card-hover); border-color: rgba(230,235,242,0.25); }
+    .btn:active { transform: scale(0.97); transition-duration: 0ms; }
+    .btn svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+    section { padding-top: 4rem; scroll-margin-top: 1rem; }
+    @media (min-width: 64rem) { section { padding-top: 0; margin-bottom: 7rem; scroll-margin-top: 6rem; } }
+
+    .section-title {
+      position: sticky; top: 0; z-index: 10;
+      margin: 0 -1.5rem 1.5rem; padding: 1.1rem 1.5rem;
+      background: var(--bg-elev);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      backdrop-filter: blur(16px) saturate(160%);
+      color: var(--text); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    @media (min-width: 64rem) {
+      .section-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; padding: 0; }
+    }
+
+    #about p { margin: 0 0 1rem; }
+    #about strong { color: var(--text); font-weight: 500; }
+
+    ol.jobs { list-style: none; margin: 0; padding: 0; }
+    .job {
+      display: grid; gap: 0.25rem 1.5rem;
+      padding: 1.25rem; margin: 0 -1.25rem 0.75rem;
+      border-radius: var(--radius);
+      transition: background-color 120ms ease-out;
+    }
+    @media (min-width: 40rem) { .job { grid-template-columns: 8rem 1fr; } }
+    .job:hover { background: var(--card-hover); }
+    .when {
+      color: var(--text-3); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.3rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .job h3 { margin: 0; color: var(--text); font-size: 1.05rem; line-height: 1.35; font-weight: 600; letter-spacing: -0.005em; }
+    .job h3 span { color: var(--text-2); font-weight: 500; }
+    .job .sub { margin: 0.15rem 0 0; color: var(--text-3); font-size: 0.95rem; }
+    .job p.desc { margin: 0.5rem 0 0; font-size: 0.95rem; line-height: 1.6; }
+
+    .group { margin-bottom: 2rem; }
+    .group h3 { margin: 0 0 0.75rem; color: var(--text); font-size: 1rem; font-weight: 600; }
+    ul.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    ul.tags li {
+      padding: 0.3rem 0.8rem; border-radius: 999px;
+      background: var(--accent-bg); color: var(--accent);
+      font-size: 0.8rem; font-weight: 600; line-height: 1.5;
+    }
+
+    #contact p { margin: 0 0 1.5rem; }
+    footer { margin-top: 4rem; padding-bottom: 4rem; color: var(--text-3); font-size: 0.85rem; }
+
+    /* Accessibility preferences */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+      .btn:active { transform: none; opacity: 0.7; }
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      .section-title { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
+    @media (prefers-contrast: more) {
+      :root { --text-2: #d5dce6; --text-3: #c3ccd9; --line: rgba(230,235,242,0.5); }
+      .section-title { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid var(--line); }
+      ul.tags li { border: 1px solid var(--accent); }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Hi, I'm donaldbthomas</h1>
-    <p>Welcome to my website. It's under construction, so check back soon.</p>
-  </main>
+  <a class="skip" href="#content">Skip to content</a>
+  <div class="wrap">
+    <header class="intro">
+      <div>
+        <h1>Donald Thomas</h1>
+        <p class="role">Controller &amp; Revenue Recognition Expert</p>
+        <p class="pitch">I turn complex accounting questions into clear, defensible answers, from standard-setting to the close.</p>
+        <nav class="toc" aria-label="Sections">
+          <ul>
+            <li><a href="#about"><span class="bar"></span>About</a></li>
+            <li><a href="#experience"><span class="bar"></span>Experience</a></li>
+            <li><a href="#expertise"><span class="bar"></span>Expertise</a></li>
+            <li><a href="#contact"><span class="bar"></span>Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://www.linkedin.com/in/dbbthomas/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </header>
+
+    <main id="content">
+      <section id="about" aria-labelledby="about-h">
+        <h2 class="section-title" id="about-h">About</h2>
+        <p>I'm a technical accounting leader based in San Francisco, with experience spanning <strong>standard-setting, Big Four advisory, and corporate finance</strong>.</p>
+        <p>I began at the <strong>FASB</strong> as a project manager on FIN 48, the interpretation on accounting for uncertainty in income taxes. Since then I've led corporate accounting and reporting for a multinational through a US GAAP to IFRS transition, advised clients as a Director at <strong>KPMG</strong>, and run financial accounting as a Senior Director at <strong>Qcells</strong>.</p>
+        <p>My focus is revenue recognition, business combinations, leasing and consolidations. I help companies reach the right answer, document it well, and build the controls to keep it right.</p>
+      </section>
+
+      <section id="experience" aria-labelledby="exp-h">
+        <h2 class="section-title" id="exp-h">Experience</h2>
+        <ol class="jobs">
+          <li class="job">
+            <div class="when">2026 — Now</div>
+            <div>
+              <h3>Independent Technical Accounting Consultant</h3>
+              <p class="sub">EnFin by Qcells</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2024 — 2026</div>
+            <div>
+              <h3>Senior Director, Financial Accounting <span>· Qcells USA</span></h3>
+              <p class="sub">San Francisco Bay Area</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2022 — 2023</div>
+            <div>
+              <h3>Managing Director <span>· Embark</span></h3>
+              <p class="desc">Financial Accounting Advisory Services. Technical accounting projects in revenue recognition, business combinations, leasing and consolidations.</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2019 — 2022</div>
+            <div>
+              <h3>Senior Manager <span>· CFGI</span></h3>
+              <p class="sub">San Francisco Bay Area</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2014 — 2019</div>
+            <div>
+              <h3>Director, Accounting Advisory Services <span>· KPMG</span></h3>
+              <p class="desc">Complex technical accounting consultations, financial reporting and disclosure, and post-merger controller's office integrations.</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2010 — 2013</div>
+            <div>
+              <h3>Finance Director; Corporate Accounting &amp; Reporting Director <span>· JTI</span></h3>
+              <p class="sub">Geneva, Switzerland</p>
+              <p class="desc">Led corporate accounting, consolidations, reporting, accounting policy and tax accounting across teams in Geneva and Manchester, including the transition from US GAAP to IFRS. Later responsible for accounting, reporting and controls compliance (J-SOX, Swiss SOX) for a division representing about half of JTI's revenue.</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2007 — 2008</div>
+            <div>
+              <h3>Senior Research Analyst <span>· Glass, Lewis &amp; Co.</span></h3>
+              <p class="desc">Analyzed money-center banks for hidden risks, including aggressive accounting, business-model flaws and disclosure irregularities.</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2006 — 2007</div>
+            <div>
+              <h3>First VP, Accounting Policy <span>· Washington Mutual</span></h3>
+              <p class="desc">Technical accounting for purchase accounting, consolidations and VIEs, equity-based compensation, loan loss allowances, TDRs and deferred loan costs.</p>
+            </div>
+          </li>
+          <li class="job">
+            <div class="when">2004 — 2006</div>
+            <div>
+              <h3>Project Manager <span>· FASB</span></h3>
+              <p class="desc">Managed FASB Interpretation No. 48, <em>Accounting for Uncertainty in Income Taxes</em>, and the Statement 109 convergence project. Appointed to a professional accounting fellowship with the SEC in 2006.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="expertise" aria-labelledby="skills-h">
+        <h2 class="section-title" id="skills-h">Expertise</h2>
+        <div class="group">
+          <h3>Technical accounting</h3>
+          <ul class="tags">
+            <li>Revenue recognition</li><li>Business combinations</li><li>Leasing</li>
+            <li>Consolidations &amp; VIEs</li><li>Income tax uncertainty</li><li>Equity compensation</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Standards &amp; reporting</h3>
+          <ul class="tags">
+            <li>US GAAP</li><li>IFRS</li><li>SEC filings</li><li>Financial statements</li><li>Accounting policy</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Controls &amp; leadership</h3>
+          <ul class="tags">
+            <li>Internal controls</li><li>SOX / J-SOX</li><li>Controllership</li>
+            <li>Post-merger integration</li><li>Forensic accounting</li><li>Global teams</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Education</h3>
+          <p style="margin:0">BSBA, Accounting — Bryant University</p>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-h">
+        <h2 class="section-title" id="contact-h">Contact</h2>
+        <p>I'm open to controller, technical accounting and advisory roles. The best way to reach me is on LinkedIn.</p>
+        <a class="btn" href="https://www.linkedin.com/in/dbbthomas/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          Connect on LinkedIn
+        </a>
+        <footer>© 2026 Donald Thomas</footer>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Highlight the current section in the side menu.
+    const links = [...document.querySelectorAll('nav.toc a')];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          links.forEach((a) => a.classList.toggle('current', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    document.querySelectorAll('main section').forEach((s) => io.observe(s));
+  </script>
 </body>
 </html>
